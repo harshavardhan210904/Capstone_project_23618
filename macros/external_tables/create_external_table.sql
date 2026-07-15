@@ -17,7 +17,8 @@ CREATE OR REPLACE EXTERNAL TABLE {{ target.database }}.BRONZE_23618.{{ table_nam
     raw_data VARIANT AS (VALUE),
 
     -- Store the source JSON filename in a separate column
-    source_file VARCHAR AS (METADATA$FILENAME)
+    source_file VARCHAR AS (METADATA$FILENAME),
+    file_last_modified TIMESTAMP AS (METADATA$FILE_LAST_MODIFIED)
 )
 
 -- Specify the location of the JSON files inside the external stage
