@@ -12,20 +12,29 @@ sources:
     # Snowflake schema where the external tables are stored
     schema: BRONZE_23618
 
-    # Configuration for this source
-    config:
+    # Timestamp column used by dbt to perform source freshness checks
+    # loaded_at_field: FILE_LAST_MODIFIED
 
-      # Configure source freshness checks
-      freshness:
+    # Configuration for source freshness validation
+    freshness:
 
-        # Warn if the source data is older than the specified time
-        warn_after:
+      # Raise a warning if the source data is older than the specified threshold
+      warn_after:
 
-          # Maximum age before warning
-          count: 24
+        # Maximum allowed age before warning
+        count: 24
 
-          # Time unit for the above count
-          period: hour
+        # Time unit for the warning threshold
+        period: hour
+
+      # Raise an error if the source data is older than the specified threshold
+      error_after:
+
+        # Maximum allowed age before failing the freshness check
+        count: 48
+
+        # Time unit for the error threshold
+        period: hour
 
     # List of external tables under this source
     tables:
