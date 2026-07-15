@@ -38,14 +38,15 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   capstone_project_23618:
 
-    staging:
-      +schema: bronze
+    bronze:
+      +schema: BRONZE_23618
+      +materialized: incremental
+      +incremental_strategy: merge
+      +unique_key: _source_file
+      +on_schema_change: sync_all_columns
 
-    intermediate:
-      +schema: silver
-      +materialized: table
+    silver:
+      +schema: SILVER_23618
 
-    marts:
-      +schema: gold
-      +materialized: table
-
+    gold:
+      +schema: GOLD_23618

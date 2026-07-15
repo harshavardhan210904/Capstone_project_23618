@@ -1,8 +1,8 @@
 -- Define a reusable dbt macro named create_external_table
 {% macro create_external_table(
-        table_name,        -- Name of the external table to create
-        stage_name,        -- Name of the external stage
-        folder_path        -- Folder inside the stage where JSON files are stored
+        table_name,        
+        stage_name,        
+        folder_path        
     )
 %}
 
