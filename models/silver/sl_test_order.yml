@@ -1,0 +1,189 @@
+version: 2
+
+models:
+  - name: sl_order
+    description: "Cleaned and standardized orders fact."
+
+    columns:
+
+      - name: order_id
+        description: "Unique order identifier."
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        tests:
+          - not_null
+
+      - name: employee_id
+        tests:
+          - not_null
+
+      - name: store_id
+        tests:
+          - not_null
+
+      - name: campaign_id
+        tests:
+          - not_null
+
+      - name: order_date
+        tests:
+          - not_null
+
+      - name: shipping_date
+
+      - name: estimated_delivery_date
+
+      - name: delivery_date
+
+      - name: created_at
+        tests:
+          - not_null
+
+      - name: order_status
+        tests:
+          - accepted_values:
+              values:
+                - Pending
+                - Completed
+                - Cancelled
+
+      - name: order_source
+        tests:
+          - not_null
+
+      - name: payment_method
+        tests:
+          - not_null
+
+      - name: shipping_method
+        tests:
+          - not_null
+
+      - name: shipping_cost
+        tests:
+          - not_null
+
+      - name: tax_amount
+        tests:
+          - not_null
+
+      - name: discount_amount
+        tests:
+          - not_null
+
+      - name: total_amount
+        tests:
+          - not_null
+
+      - name: billing_street
+        tests:
+          - not_null
+
+      - name: billing_city
+        tests:
+          - not_null
+
+      - name: billing_state
+        tests:
+          - not_null
+
+      - name: billing_zip_code
+        tests:
+          - not_null
+
+      - name: shipping_street
+        tests:
+          - not_null
+
+      - name: shipping_city
+        tests:
+          - not_null
+
+      - name: shipping_state
+        tests:
+          - not_null
+
+      - name: shipping_zip_code
+        tests:
+          - not_null
+
+      - name: total_items
+        tests:
+          - not_null
+
+      - name: total_quantity
+        tests:
+          - not_null
+
+      - name: line_revenue
+        tests:
+          - not_null
+
+      - name: line_cost
+        tests:
+          - not_null
+
+      - name: profit_amount
+        tests:
+          - not_null
+
+      - name: profit_margin_percentage
+        tests:
+          - not_null
+
+      - name: processing_days
+        tests:
+          - not_null
+
+      - name: shipping_days
+        tests:
+          - not_null
+
+      - name: delivery_days
+        tests:
+          - not_null
+
+      - name: delivery_status
+        tests:
+          - accepted_values:
+              values:
+                - On Time
+
+      - name: order_time_of_day
+        tests:
+          - not_null
+
+      - name: order_week
+        tests:
+          - not_null
+
+      - name: order_month
+        tests:
+          - not_null
+
+      - name: order_quarter
+        tests:
+          - not_null
+
+      - name: order_year
+        tests:
+          - not_null
+
+      - name: billing_address
+        tests:
+          - not_null
+
+      - name: shipping_address
+        tests:
+          - not_null
+
+      - name: is_valid_billing_zip
+        tests:
+          - not_null
+
+      - name: is_valid_shipping_zip
+        tests:
+          - not_null

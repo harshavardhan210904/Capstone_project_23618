@@ -1,0 +1,138 @@
+version: 2
+
+models:
+  - name: sl_employee
+    description: "Cleaned and standardized employee dimension."
+
+    columns:
+
+      - name: employee_id
+        description: "Unique employee identifier."
+        tests:
+          - unique
+          - not_null
+
+      - name: first_name
+        tests:
+          - not_null
+
+      - name: last_name
+        tests:
+          - not_null
+
+      - name: full_name
+        tests:
+          - not_null
+
+      - name: email
+        tests:
+          - not_null
+
+      - name: is_valid_email
+        tests:
+          - not_null
+
+      - name: phone
+        tests:
+          - not_null
+
+      - name: is_valid_phone
+        tests:
+          - not_null
+
+      - name: date_of_birth
+
+      - name: employee_age
+        tests:
+          - not_null
+
+      - name: hire_date
+
+      - name: tenure_years
+        tests:
+          - not_null
+
+      - name: last_modified_date
+
+      - name: role
+        tests:
+          - not_null
+
+      - name: department
+        tests:
+          - not_null
+
+      - name: manager_id
+        tests:
+          - not_null
+
+      - name: work_location
+        tests:
+          - not_null
+
+      - name: employment_status
+        tests:
+          - accepted_values:
+              values:
+                - Active
+                - Inactive
+                - On Leave
+                - Terminated
+
+      - name: education
+        tests:
+          - not_null
+
+      - name: salary
+        tests:
+          - not_null
+
+      - name: current_sales
+        tests:
+          - not_null
+
+      - name: sales_target
+        tests:
+          - not_null
+
+      - name: target_achievement_percentage
+        tests:
+          - not_null
+
+      - name: performance_rating
+        tests:
+          - not_null
+
+      - name: orders_processed
+        tests:
+          - not_null
+
+      - name: total_sales_amount
+        tests:
+          - not_null
+
+      - name: street
+        tests:
+          - not_null
+
+      - name: city
+        tests:
+          - not_null
+
+      - name: state
+        tests:
+          - not_null
+
+      - name: zip_code
+        tests:
+          - not_null
+
+      - name: is_valid_zip
+        tests:
+          - not_null
+
+      - name: full_address
+        tests:
+          - not_null
+
+      - name: certifications

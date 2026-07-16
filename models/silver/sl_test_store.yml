@@ -1,0 +1,145 @@
+version: 2
+
+models:
+  - name: sl_store
+    description: "Cleaned and standardized store dimension."
+
+    columns:
+
+      - name: store_id
+        description: "Unique store identifier."
+        tests:
+          - unique
+          - not_null
+
+      - name: store_name
+        tests:
+          - not_null
+
+      - name: store_type
+        tests:
+          - not_null
+
+      - name: region
+        tests:
+          - not_null
+
+      - name: manager_id
+        tests:
+          - not_null
+
+      - name: employee_count
+        tests:
+          - not_null
+
+      - name: size_sq_ft
+        tests:
+          - not_null
+
+      - name: store_size_category
+        tests:
+          - accepted_values:
+              values:
+                - Small
+                - Medium
+                - Large
+
+      - name: current_sales
+        tests:
+          - not_null
+
+      - name: sales_target
+        tests:
+          - not_null
+
+      - name: monthly_rent
+        tests:
+          - not_null
+
+      - name: sales_target_achievement_percentage
+        tests:
+          - not_null
+
+      - name: employee_efficiency
+        tests:
+          - not_null
+
+      - name: revenue_per_sq_ft
+        tests:
+          - not_null
+
+      - name: performance_issue
+        tests:
+          - not_null
+
+      - name: is_active
+        tests:
+          - not_null
+
+      - name: opening_date
+
+      - name: store_age_years
+        tests:
+          - not_null
+
+      - name: last_modified_date
+
+      - name: email
+        tests:
+          - not_null
+
+      - name: is_valid_email
+        tests:
+          - not_null
+
+      - name: phone_number
+        tests:
+          - not_null
+
+      - name: is_valid_phone
+        tests:
+          - not_null
+
+      - name: street
+        tests:
+          - not_null
+
+      - name: city
+        tests:
+          - not_null
+
+      - name: state
+        tests:
+          - not_null
+
+      - name: country
+        tests:
+          - not_null
+
+      - name: zip_code
+        tests:
+          - not_null
+
+      - name: is_valid_zip
+        tests:
+          - not_null
+
+      - name: full_address
+        tests:
+          - not_null
+
+      - name: weekdays
+        tests:
+          - not_null
+
+      - name: weekends
+        tests:
+          - not_null
+
+      - name: holidays
+        tests:
+          - not_null
+
+      - name: services
+        tests:
+          - not_null
