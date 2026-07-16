@@ -186,6 +186,7 @@ e.last_modified_date desc,
 e._loaded_at desc,
 e._source_file desc
 )=1
+-- this means take only the recent record
 )
 
 select *
