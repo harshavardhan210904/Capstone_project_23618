@@ -1,61 +1,26 @@
 version: 2
 
-# Defines external data sources used by dbt
 sources:
-
-  # Logical name used inside {{ source() }}
   - name: bronze_external
-
-    # Snowflake database containing the external tables
     database: CT_HARSHAVARDHAN_K_DB
-
-    # Snowflake schema where the external tables are stored
     schema: BRONZE_23618
 
-    # Timestamp column used by dbt to perform source freshness checks
-    #loaded_at_field: FILE_LAST_MODIFIED
+    loaded_at_field: FILE_LAST_MODIFIED
+
     config:
-    # Configuration for source freshness validation
       freshness:
-
-        # Raise a warning if the source data is older than the specified threshold
         warn_after:
-
-          # Maximum allowed age before warning
-          count: 24
-
-          # Time unit for the warning threshold
-          period: hour
-
-        # Raise an error if the source data is older than the specified threshold
+          count: 180
+          period: day
         error_after:
+          count: 365
+          period: day
 
-          # Maximum allowed age before failing the freshness check
-          count: 48
-
-          # Time unit for the error threshold
-          period: hour
-
-    # List of external tables under this source
     tables:
-
       - name: EXT_CUSTOMER_DATA
-        description: "External table containing raw customer JSON data."
-
       - name: EXT_ORDERS_DATA
-        description: "External table containing raw order JSON data."
-
       - name: EXT_PRODUCT_DATA
-        description: "External table containing raw product JSON data."
-
       - name: EXT_STORE_DATA
-        description: "External table containing raw store JSON data."
-
       - name: EXT_SUPPLIER_DATA
-        description: "External table containing raw supplier JSON data."
-
       - name: EXT_EMPLOYEE_DATA
-        description: "External table containing raw employee JSON data."
-
       - name: EXT_CAMPAIGN_DATA
-        description: "External table containing raw campaign JSON data."

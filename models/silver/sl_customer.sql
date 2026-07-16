@@ -1,3 +1,4 @@
+-- we can still change this materialised in the project.yml file also
 {{ config(
     materialized='table'
 ) }}
