@@ -50,3 +50,7 @@ models:
 
     gold:
       +schema: GOLD_23618
+      
+    reporting_views:
+      +schema: REPORTING_VIEWS
+      +materialized: view
