@@ -137,15 +137,31 @@ flattened_items as (
 
         c.shipping_zip_code,
 
-        f.value:product_id::string as product_id,
+        trim(f.value:product_id::string) as product_id,
 
-        coalesce(f.value:quantity::number,0) as quantity,
+        coalesce(f.value:quantity::number(38,0),0) as quantity,
 
         coalesce(f.value:unit_price::number(12,2),0) as unit_price,
 
         coalesce(f.value:cost_price::number(12,2),0) as cost_price,
 
         coalesce(f.value:discount_amount::number(12,2),0) as item_discount_amount,
+
+        (
+            coalesce(f.value:quantity::number(38,0),0)
+            *
+            coalesce(f.value:unit_price::number(12,2),0)
+        )
+        -
+        coalesce(f.value:discount_amount::number(12,2),0)
+        as line_revenue,
+
+        (
+            coalesce(f.value:quantity::number(38,0),0)
+            *
+            coalesce(f.value:cost_price::number(12,2),0)
+        )
+        as line_cost,
 
         _source_file,
 
@@ -164,52 +180,81 @@ aggregated_orders as (
 
         order_id,
 
+        product_id,
+
         any_value(customer_id) as customer_id,
+
         any_value(employee_id) as employee_id,
+
         any_value(store_id) as store_id,
+
         any_value(campaign_id) as campaign_id,
 
         any_value(order_date) as order_date,
+
         any_value(shipping_date) as shipping_date,
+
         any_value(estimated_delivery_date) as estimated_delivery_date,
+
         any_value(delivery_date) as delivery_date,
+
         any_value(created_at) as created_at,
 
         any_value(order_status) as order_status,
+
         any_value(order_source) as order_source,
+
         any_value(payment_method) as payment_method,
+
         any_value(shipping_method) as shipping_method,
 
         any_value(shipping_cost) as shipping_cost,
+
         any_value(tax_amount) as tax_amount,
+
         any_value(discount_amount) as discount_amount,
+
         any_value(total_amount) as total_amount,
 
         any_value(billing_street) as billing_street,
+
         any_value(billing_city) as billing_city,
+
         any_value(billing_state) as billing_state,
+
         any_value(billing_zip_code) as billing_zip_code,
 
         any_value(shipping_street) as shipping_street,
-        any_value(shipping_city) as shipping_city,
-        any_value(shipping_state) as shipping_state,
-        any_value(shipping_zip_code) as shipping_zip_code,
 
-        count(product_id) as total_items,
+        any_value(shipping_city) as shipping_city,
+
+        any_value(shipping_state) as shipping_state,
+
+        any_value(shipping_zip_code) as shipping_zip_code,
 
         sum(quantity) as total_quantity,
 
-        sum((quantity * unit_price) - item_discount_amount) as line_revenue,
+        any_value(unit_price) as unit_price,
 
-        sum(quantity * cost_price) as line_cost,
+        any_value(cost_price) as cost_price,
+
+        sum(line_revenue) as line_revenue,
+
+        sum(line_cost) as line_cost,
 
         any_value(_source_file) as _source_file,
+
         any_value(_loaded_at) as _loaded_at,
+
         any_value(_batch_id) as _batch_id
 
     from flattened_items
 
-    group by order_id
+    group by
+
+        order_id,
+
+        product_id
 
 ),
 
@@ -343,7 +388,9 @@ latest_order as (
 
     qualify row_number() over (
 
-        partition by order_id
+        partition by
+            order_id,
+            product_id
 
         order by
 

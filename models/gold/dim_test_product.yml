@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: dim_product
+    description: Product Dimension
+
+    columns:
+
+      - name: product_key
+        tests:
+          - unique
+          - not_null
+
+      - name: product_id
+        tests:
+          - unique
+          - not_null
+
+      - name: product_name
+        tests:
+          - not_null
+
+      - name: category
+        tests:
+          - not_null
+
+      - name: unit_price
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: ">= 0"
+
+      - name: cost_price
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: ">= 0"

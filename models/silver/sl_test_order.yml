@@ -4,12 +4,21 @@ models:
   - name: sl_order
     description: "Cleaned and standardized orders fact."
 
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - order_id
+              - product_id
+
     columns:
 
       - name: order_id
-        description: "Unique order identifier."
         tests:
-          - unique
+          - not_null
+
+      - name: product_id
+        tests:
           - not_null
 
       - name: customer_id
@@ -110,10 +119,6 @@ models:
         tests:
           - not_null
 
-      - name: total_items
-        tests:
-          - not_null
-
       - name: total_quantity
         tests:
           - not_null
@@ -151,6 +156,8 @@ models:
           - accepted_values:
               values:
                 - On Time
+                - Delayed
+                - Pending
 
       - name: order_time_of_day
         tests:
