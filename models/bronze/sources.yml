@@ -1,0 +1,26 @@
+version: 2
+
+sources:
+  - name: bronze_external
+    database: CT_HARSHAVARDHAN_K_DB
+    schema: BRONZE_23618
+
+    loaded_at_field: FILE_LAST_MODIFIED
+
+    config:
+      freshness:
+        warn_after:
+          count: 180
+          period: day
+        error_after:
+          count: 365
+          period: day
+
+    tables:
+      - name: EXT_CUSTOMER_DATA
+      - name: EXT_ORDERS_DATA
+      - name: EXT_PRODUCT_DATA
+      - name: EXT_STORE_DATA
+      - name: EXT_SUPPLIER_DATA
+      - name: EXT_EMPLOYEE_DATA
+      - name: EXT_CAMPAIGN_DATA
