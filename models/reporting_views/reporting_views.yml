@@ -1,0 +1,33 @@
+version: 2
+
+models:
+
+  - name: sales_by_category
+    description: Sales summary by product category.
+
+  - name: sales_trend_by_region
+    description: Monthly sales trend by region.
+
+  - name: top_selling_products
+    description: Displays the top-selling products based on quantity sold and revenue generated.
+
+  - name: customer_purchasing_behavior
+    description: Analyzes customer purchasing patterns, including total orders, spending, and average order value.
+
+  - name: customer_lifetime_value
+    description: Calculates the lifetime value of each customer based on total revenue generated.
+
+  - name: repeat_purchase_rate
+    description: Identifies repeat customers and analyzes repeat purchase behavior.
+
+  - name: customer_segmentation_analysis
+    description: Segments customers into value-based groups such as High, Medium, and Low Value.
+
+  - name: sales_contribution_by_employee_role
+    description: Summarizes sales performance by employee role.
+
+  - name: top_performing_employees_by_region
+    description: Identifies the highest-performing employees in each region based on sales revenue.
+
+  - name: tenure_vs_performance_metrics
+    description: Analyzes the relationship between employee tenure and performance metrics such as sales and ratings.

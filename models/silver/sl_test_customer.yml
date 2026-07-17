@@ -1,0 +1,105 @@
+version: 2
+
+models:
+  - name: sl_customer
+    description: "Cleaned and standardized customer dimension."
+
+    columns:
+
+      - name: customer_id
+        description: "Unique customer identifier."
+        tests:
+          - unique
+          - not_null
+
+      - name: first_name
+        tests:
+          - not_null
+
+      - name: last_name
+        tests:
+          - not_null
+
+      - name: full_name
+        tests:
+          - not_null
+
+      - name: email
+        tests:
+          - not_null
+
+      - name: is_valid_email
+        tests:
+          - not_null
+
+      - name: phone
+        tests:
+          - not_null
+
+      - name: is_valid_phone
+        tests:
+          - not_null
+
+
+      - name: birth_date
+
+      - name: customer_segment
+        tests:
+          - accepted_values:
+              values:
+                - Young
+                - Middle-aged
+                - Senior
+                - Unknown
+      - name: income_bracket
+        tests:
+          - accepted_values:
+              values:
+                - LOW
+                - MEDIUM
+                - HIGH
+                - UNKNOWN
+
+      - name: loyalty_tier
+        tests:
+          - accepted_values:
+              values:
+                - BRONZE
+                - SILVER
+                - GOLD
+                - PLATINUM
+                - UNKNOWN
+
+      - name: marketing_opt_in
+        tests:
+          - not_null
+
+      - name: preferred_communication
+        tests:
+          - accepted_values:
+              values:
+                - EMAIL
+                - PHONE
+                - SMS
+                - MAIL
+                - UNKNOWN
+
+      - name: total_purchases
+        tests:
+          - not_null
+
+      - name: total_spend
+        tests:
+          - not_null
+
+      - name: city
+        tests:
+          - not_null
+
+      - name: state
+        tests:
+          - not_null
+
+      - name: country
+        tests:
+          - not_null

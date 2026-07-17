@@ -1,0 +1,45 @@
+version: 2
+
+models:
+
+  - name: br_customer
+    description: "Raw customer data."
+    columns:
+      - name: _source_file
+        tests: [not_null]
+
+  - name: br_orders
+    description: "Raw order data."
+    columns:
+      - name: _source_file
+        tests: [not_null]
+
+  - name: br_product
+    description: "Raw product data."
+    columns:
+      - name: _source_file
+        tests: [not_null]
+
+  - name: br_store
+    description: "Raw store data."
+    columns:
+      - name: _source_file
+        tests: [not_null]
+
+  - name: br_supplier
+    description: "Raw supplier data."
+    columns:
+      - name: _source_file
+        tests: [not_null]
+
+  - name: br_employee
+    description: "Raw employee data."
+    columns:
+      - name: _source_file
+        tests: [not_null]
+
+  - name: br_campaign
+    description: "Raw campaign data."
+    columns:
+      - name: _source_file
+        tests: [not_null]

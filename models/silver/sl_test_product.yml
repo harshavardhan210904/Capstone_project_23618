@@ -1,0 +1,105 @@
+version: 2
+
+models:
+  - name: sl_product
+    description: "Cleaned and standardized product dimension."
+
+    columns:
+
+      - name: product_id
+        description: "Unique product identifier."
+        tests:
+          - unique
+          - not_null
+
+      - name: product_name
+        tests:
+          - not_null
+
+      - name: brand
+        tests:
+          - not_null
+
+      - name: category
+        tests:
+          - not_null
+
+      - name: subcategory
+        tests:
+          - not_null
+
+      - name: product_line
+        tests:
+          - not_null
+
+      - name: color
+        tests:
+          - not_null
+
+      - name: size
+        tests:
+          - not_null
+
+      - name: weight
+        tests:
+          - not_null
+
+      - name: dimensions
+        tests:
+          - not_null
+
+      - name: cost_price
+        tests:
+          - not_null
+
+      - name: unit_price
+        tests:
+          - not_null
+
+      - name: stock_quantity
+        tests:
+          - not_null
+
+      - name: reorder_level
+        tests:
+          - not_null
+
+      - name: is_featured
+        tests:
+          - not_null
+
+      - name: supplier_id
+        tests:
+          - not_null
+
+      - name: launch_date
+
+      - name: last_modified_date
+
+      - name: warranty_period
+        tests:
+          - not_null
+
+      - name: technical_specs
+        tests:
+          - not_null
+
+      - name: short_description
+        tests:
+          - not_null
+
+      - name: product_full_description
+        tests:
+          - not_null
+
+      - name: product_hierarchy
+        tests:
+          - not_null
+
+      - name: profit_margin_percentage
+        tests:
+          - not_null
+
+      - name: is_low_stock
+        tests:
+          - not_null
