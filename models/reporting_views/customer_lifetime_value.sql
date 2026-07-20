@@ -11,7 +11,7 @@ select
     sum(f.quantity_sold) as total_quantity_purchased,
     sum(f.total_sales_amount) as lifetime_value,
     sum(f.profit_amount) as total_profit,
-    avg(f.total_sales_amount) as average_order_value
+    round(avg(f.total_sales_amount), 2) as average_order_value
 from {{ ref('fact_sales') }} f
 join {{ ref('dim_customer') }} c
     on f.customer_key = c.customer_key
