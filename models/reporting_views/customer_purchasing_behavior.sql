@@ -10,7 +10,7 @@ select
     count(distinct f.order_id) as total_orders,
     sum(f.quantity_sold) as total_quantity_purchased,
     sum(f.total_sales_amount) as total_spent,
-    avg(f.total_sales_amount) as average_order_value,
+    round(avg(f.total_sales_amount), 2) as average_order_value,
     sum(f.profit_amount) as total_profit_generated
 from {{ ref('fact_sales') }} f
 join {{ ref('dim_customer') }} c
